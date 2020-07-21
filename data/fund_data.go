@@ -10,9 +10,10 @@ import (
 )
 
 type FundData struct {
-	FundName string `json:"name"`
-	FundCode string `json:"fundcode"`
-	FundUd   string `json:"gszzl"`
+	FundName   string `json:"name"`
+	FundCode   string `json:"fundcode"`
+	FundUd     string `json:"gszzl"`
+	UpdateTime string `json:"gztime"`
 }
 
 func GetFundData(fundCode string) (FundData, error) {
@@ -24,14 +25,6 @@ func GetFundData(fundCode string) (FundData, error) {
 	if res.StatusCode != 200 {
 		return FundData{}, fmt.Errorf("status code error: %d %s", res.StatusCode, res.Status)
 	}
-	//f, err := os.Open("/Users/chenyitao/Desktop/180012.html")
-	//if err != nil {
-	//	panic(err)
-	//}
-	//defer f.Close()
-	//var r io.Reader
-	//r = f
-
 	bytes, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		return FundData{}, err

@@ -19,7 +19,7 @@ func main() {
 	//exPath := filepath.Dir(ex)
 	//fontPath := fmt.Sprintf("%s/%s", exPath, cfg.Font)
 	// 绝对路径
-	fontPath := "/Users/fund-valuation/WeiRuanYaHei.ttf"
+	fontPath := "/Users/xxx/fund-valuation/WeiRuanYaHei.ttf"
 
 	os.Setenv("FYNE_FONT", fontPath)
 	os.Setenv("FYNE_THEME", "light")
@@ -31,7 +31,9 @@ func main() {
 	size := fyne.NewSize(600, 400)
 	fWin.Resize(size)
 
-	fWin.SetContent(view.NewFundView(cfg, &fWin))
+	fundContainer := view.NewFundContainer(cfg, &fWin)
+	fWin.SetContent(fundContainer.Container)
+	fundContainer.InitFund()
 	fWin.ShowAndRun()
 
 }

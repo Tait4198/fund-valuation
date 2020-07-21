@@ -49,7 +49,7 @@ func (v *FundDataList) UpdateItemByFundCode(fundCode string, fundData data.FundD
 	for _, item := range v.box.Children {
 		pItem := item.(*FundDataItem)
 		if fundCode == pItem.fundCode {
-			pItem.UpdateUdValue(fundData.FundUd)
+			pItem.UpdateUdValue(fundData)
 		}
 	}
 }
