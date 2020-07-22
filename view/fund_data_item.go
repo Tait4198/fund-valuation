@@ -28,13 +28,6 @@ type FundDataItem struct {
 	fundCode      string
 }
 
-func (v *FundDataItem) UpdateUdValue(data data.FundData) {
-	v.updateLabel.Text = data.UpdateTime
-	v.fundUdText.Text = data.FundUd
-	v.fundUdText.Color = GetUdColor(data.FundUd)
-	v.fundUdText.Refresh()
-}
-
 func GetUdColor(ud string) color.RGBA {
 	udVal, err := strconv.ParseFloat(ud, 32)
 	if err == nil {
